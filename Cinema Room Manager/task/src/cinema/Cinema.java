@@ -1,20 +1,25 @@
 package cinema;
 
+import java.util.Scanner;
+
 public class Cinema {
 
     public static void main(String[] args) {
         // Write your code here
-        String seats = """
-                  1 2 3 4 5 6 7 8
-                1 S S S S S S S S
-                2 S S S S S S S S
-                3 S S S S S S S S
-                4 S S S S S S S S
-                5 S S S S S S S S
-                6 S S S S S S S S
-                7 S S S S S S S S
-                """;
-        System.out.println("Cinema:");
-        System.out.println(seats);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of rows:");
+        int rows = scanner.nextInt();
+        System.out.println("Enter the number of seats in each row:");
+        int seats = scanner.nextInt();
+        int profit;
+        if ((rows * seats) < 60) {
+            profit = (rows * seats) * 10;
+        } else {
+            int first = rows / 2;
+            int back = rows - first;
+            profit = ((first * seats) * 10) + ((back * seats) * 8);
+        }
+        System.out.println("Total income:");
+        System.out.println("$" + profit);
     }
 }
